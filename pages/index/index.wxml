@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="container">
+<main>
+  <h4>暴富指南</h4>
+
+  <van-tabs type="card" bind:change="clearData">
+    <van-tab title="双色球" name="a">
+       <van-row style="margin-top: 20px;" :gutter="20">        
+          <van-col span="16">
+            <van-button type="primary" block round size="small" bind:click="getANum">生成号码</van-button>
+          </van-col>
+          <van-col span="8">
+            <van-button type="default" block round size="small"    bind:click="clearData">清理号码</van-button>
+          </van-col>
+          <van-button type="default" 
+                    style="margin: 20px 0;" block type="success" round size="small">复制到粘贴板</van-button>
+          <div >
+            {{this.data.result}}
+          </div>
+        </van-row>
+    </van-tab>
+    <van-tab title="大乐透" name="b">
+        <van-row style="margin-top: 20px;" :gutter="20">
+          <van-col span="16">
+            <van-button type="primary" block round size="small" bind:click="getBNum">生成号码</van-button>
+          </van-col>
+          <van-col span="8">
+            <van-button type="default" block round size="small" bind:click="clearData">清理号码</van-button>
+          </van-col>
+        </van-row>
+        <van-button id="btn_copy_data_b" :data-clipboard-text="result.join('\n')"
+                    style="margin: 20px 0;" block type="success" round size="small">复制到粘贴板</van-button>
+        <div v-for="item in result" :key="item">{{item}}</div>
+      </van-tab>
+  </van-tabs>
+  </main>
+</view>
